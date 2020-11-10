@@ -1,0 +1,46 @@
+//https://www.codechef.com/LRNDSA01/problems/LADDU
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+	int t;
+	cin>>t;
+	while(t--)
+	{
+		int act,laddu=0,rank,severity;
+		string origin,type;
+		cin>>act>>origin;
+		while(act--)
+		{
+			cin>>type;
+			if(type=="CONTEST_WON")
+			{
+				laddu += 300;
+				cin>>rank;
+	            if(rank<20)
+				{
+				    laddu += 20-rank;
+				}
+			}
+			else if(type=="TOP_CONTRIBUTOR")
+			{
+				laddu += 300;
+			}
+			else if(type=="BUG_FOUND")
+			{
+				cin>>severity;
+				laddu += severity;
+			}
+			else if(type=="CONTEST_HOSTED")
+			{
+				laddu += 50;
+			}
+		}
+		if((origin=="INDIAN"))
+		cout<<laddu/200<<endl;
+		else 
+		cout<<laddu/400<<endl;
+		
+	}
+	return 0;
+}

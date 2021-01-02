@@ -14,5 +14,11 @@ void main()
         cin >> temp;
         v.push_back(temp);
     }
+    int k;
+    cin >> k;
+    // cout << "O(nlogn)" << endl;
+    // sort(v.begin(),v.end());
+    // cout << v[k];
+    ''' MIN HEAP ______ INCOMPLETE QUESTION '''
     return 0;
 }

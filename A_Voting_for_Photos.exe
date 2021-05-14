@@ -1,8 +1,8 @@
-# 1 "E:\\Codes\\Chef.cpp"
+# 1 "E:\\Codes\\A_Voting_for_Photos.cpp"
 # 1 "E:\\Codes//"
 # 1 "<built-in>"
 # 1 "<command-line>"
-# 1 "E:\\Codes\\Chef.cpp"
+# 1 "E:\\Codes\\A_Voting_for_Photos.cpp"
 # 1 "c:\\mingw\\include\\c++\\9.2.0\\x86_64-w64-mingw32\\bits\\stdc++.h" 1 3
 # 33 "c:\\mingw\\include\\c++\\9.2.0\\x86_64-w64-mingw32\\bits\\stdc++.h" 3
 # 1 "c:\\mingw\\include\\c++\\9.2.0\\cassert" 1 3
@@ -101959,19 +101959,45 @@ namespace std
 
 }
 # 123 "c:\\mingw\\include\\c++\\9.2.0\\x86_64-w64-mingw32\\bits\\stdc++.h" 2 3
-# 2 "E:\\Codes\\Chef.cpp" 2
+# 2 "E:\\Codes\\A_Voting_for_Photos.cpp" 2
 
-# 2 "E:\\Codes\\Chef.cpp"
+# 2 "E:\\Codes\\A_Voting_for_Photos.cpp"
 using namespace std;
 
 int main()
 {
-    long long int n,x,y,a,b,z;
-    cin >> n;
-    while(n--)
+    long long int num,temp;
+    cin >> num;
+    map<int, int> votes;
+    int v ;
+    long long int max = 
+# 10 "E:\\Codes\\A_Voting_for_Photos.cpp" 3 4
+                       (-0x7fffffff - 1)
+# 10 "E:\\Codes\\A_Voting_for_Photos.cpp"
+                              ;
+    while(num--)
     {
-        cin >> x >> y >> a >> b >> z;
-        string c = ( z <= min(x/a,y/b) ) ? "Yes" : "No";
-        cout << c << endl;
+        cin >> temp;
+        auto itr = votes.begin();
+        if(votes.find(temp)!=votes.end())
+        {
+            auto it = votes.find(temp);
+            it->second++;
+            if(it->second>max)
+            {
+                v = temp;
+                max = it->second;
+            }
+        }
+        else
+        {
+            votes.insert({ temp, 1 });
+            if(votes[temp]>max)
+            {
+                v = temp;
+                max = votes[temp];
+            }
+        }
     }
+    cout << v << endl;
 }

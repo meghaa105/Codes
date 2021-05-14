@@ -6,7 +6,7 @@ int main()
     long long int num,temp;
     cin >> num;
     map<int, int> votes;
-    stack<int> v;
+    int v ;
     long long int max = INT_MIN;
     while(num--)
     {
@@ -18,7 +18,7 @@ int main()
             it->second++;
             if(it->second>max)
             {
-                v.push(it->first);
+                v = temp;
                 max = it->second;
             }
         }
@@ -27,10 +27,10 @@ int main()
             votes.insert({ temp, 1 });
             if(votes[temp]>max)
             {
-                v.push(temp);
+                v = temp;
                 max = votes[temp];
             }
         }      
     }
-    cout << v.top() << endl;
+    cout << v << endl;
 }

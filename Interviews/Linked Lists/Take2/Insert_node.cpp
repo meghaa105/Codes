@@ -4,12 +4,40 @@ using namespace std;
 struct node
 {
     int data;
-    node *next;
+    node* next;
 };
-
+node *delete_node(node*head, int input)
+{
+    if(head == NULL)
+    {
+        return head;
+    }
+    if(head->data == input)
+    {
+        return head->next;
+    }
+    else
+    {
+        node* temp;
+        temp = head;
+        while(temp->next!=NULL && temp->next->data!=input)
+        {
+            temp= temp->next;
+        }
+        if(temp->next==NULL)
+        {
+            return head;
+        }
+        else
+        {
+            temp->next = temp->next->next;
+            return head;
+        }
+    }
+}
 node* insert(node* head, int input)
 {
-    node *new_node = (node*)malloc(sizeof(node));
+    node* new_node = (node*)malloc(sizeof(node));
     // node *newNode = (node*)malloc(sizeof(node));
     new_node->data = input;
     new_node->next = NULL;
@@ -55,12 +83,15 @@ int main()
     int n;
     cout << "Enter the number of terms " << endl;
     cin >> n;
+    int temp;
     while(n--)
     {
-        int temp;
         cin >> temp;
         head = insert(head,temp);
     }
+    cout << "Enter the term you want to delete" << endl;
+    cin >> temp;
+    head = delete_node(head,temp);
     cout << "All the terms inserted are" << endl;
     print(head);
     return 0;

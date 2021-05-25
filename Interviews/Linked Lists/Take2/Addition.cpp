@@ -58,32 +58,23 @@ node* insert(node* head, int input)
         return head;
     }
 }
-void search_node(node*head, int input)
+void add_nodes(node*head, node*head1, node*head2)
 {
-    if(head == NULL)
+    if(head == NULL || head1 == NULL)
     {
-        cout << "Empty list" << endl;
-    }
-    if(head->data == input)
-    {
-        cout << "Present" << endl;
+        cout << "Can't add" << endl;
     }
     else
     {
         node* temp;
+        node *temp1;
         temp = head;
-        while(temp)
+        temp1 = head1;
+        while(temp && temp1)
         {
-            if(temp->data == input)
-            {
-                cout << "Node found" << endl;
-                break;
-            }
+            head2 = insert(head2,temp1->data + temp->data);
             temp= temp->next;
-        }
-        if(temp==NULL)
-        {
-            cout << "Not found" << endl;
+            temp1 = temp1->next;
         }
     }
 }
@@ -109,20 +100,28 @@ void print(node* head)
 int main()
 {
     node*head;
-    int n;
+    node*head1;
+    node *head2;
+    int n,n1;
     cout << "Enter the number of terms " << endl;
     cin >> n;
+    n1 = n;
     int temp;
     while(n--)
     {
         cin >> temp;
         head = insert(head,temp);
     }
-    search_node(head,2);
-    cout << "Enter the term you want to delete" << endl;
-    cin >> temp;
-    head = delete_node(head,temp);
-    cout << "All the terms inserted are" << endl;
+    cout << "Now insert for list2" << endl;
+    while(n1--)
+    {
+        cin >> temp;
+        head1 = insert(head1,temp);
+    }
+    add_nodes(head,head1,head2);
+    cout << "Addition of the two lists is" << endl;
     print(head);
+    print(head1);
+    print(head2);
     return 0;
 }

@@ -6,35 +6,7 @@ struct node
     int data;
     node* next;
 };
-node *delete_node(node*head, int input)
-{
-    if(head == NULL)
-    {
-        return head;
-    }
-    if(head->data == input)
-    {
-        return head->next;
-    }
-    else
-    {
-        node* temp;
-        temp = head;
-        while(temp->next!=NULL && temp->next->data!=input)
-        {
-            temp= temp->next;
-        }
-        if(temp->next==NULL)
-        {
-            return head;
-        }
-        else
-        {
-            temp->next = temp->next->next;
-            return head;
-        }
-    }
-}
+
 node* insert(node* head, int input)
 {
     node* new_node = (node*)malloc(sizeof(node));
@@ -119,9 +91,9 @@ int main()
         head = insert(head,temp);
     }
     search_node(head,2);
-    cout << "Enter the term you want to delete" << endl;
-    cin >> temp;
-    head = delete_node(head,temp);
+    // cout << "Enter the term you want to delete" << endl;
+    // cin >> temp;
+    // head = delete_node(head,temp);
     cout << "All the terms inserted are" << endl;
     print(head);
     return 0;
